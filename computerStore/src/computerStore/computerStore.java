@@ -93,11 +93,6 @@ public class computerStore extends JFrame {
 			}
 		});
 		*/
-		compNum.addActionListener(new java.awt.event.ActionListener() {
-		    public void actionPerformed(java.awt.event.ActionEvent e) {
-		    	compCost.setText(Integer.parseInt(compNum.getText())*675 + "");
-		    }
-		});
 		compNum.setBounds(6, 62, 130, 26);
 		compNum.setText("0");
 		contentPane.add(compNum);
@@ -154,7 +149,15 @@ public class computerStore extends JFrame {
 		JButton CalcButton = new JButton("Calculate");
 		CalcButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				double compTotalCost = Integer.parseInt(compNum.getText())*675;
+				compCost.setText(compTotalCost + "");
+				double ddTotalCost = Integer.parseInt(ddNum.getText())*198.5 ;
+				ddCost.setText(ddTotalCost + "");
+				double spTotalCost = Integer.parseInt(spNum.getText())*34.98;
+				spCost.setText(spTotalCost + "");
+				double mcTotalCost = Integer.parseInt(mcNum.getText())*68.98;
+				mcCost.setText(mcTotalCost + "");
+				totCost.setText(compTotalCost + ddTotalCost + spTotalCost + mcTotalCost + "");
 			}
 		});
 		CalcButton.setBounds(233, 320, 117, 29);
