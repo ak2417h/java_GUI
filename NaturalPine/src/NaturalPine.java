@@ -51,7 +51,7 @@ public class NaturalPine extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel employeelbl = new JLabel("Employee");
-		employeelbl.setBounds(10, 11, 46, 14);
+		employeelbl.setBounds(10, 11, 114, 14);
 		contentPane.add(employeelbl);
 		
 		JLabel hourslbl = new JLabel("Hours Worked");
@@ -160,6 +160,12 @@ public class NaturalPine extends JFrame {
 				double wage = Double.parseDouble(wagetxt.getText());
 				double gp = hours*wage;
 				gptxt.setText(gp+"");
+				double fw = gp*0.18;
+				fwtxt.setText(fw+"");
+				double sw = gp*0.045;
+				swtxt.setText(sw+"");
+				tdtxt.setText(fw+sw+25.65+7.85+"");
+				nptxt.setText(gp-(fw+sw+25.65+7.85)+"");
 				
 			}
 		});
