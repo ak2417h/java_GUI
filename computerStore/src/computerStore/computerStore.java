@@ -85,6 +85,19 @@ public class computerStore extends JFrame {
 		contentPane.add(totalLabel);
 		
 		compNum = new JTextField();
+		/*
+		compNum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				compCost.setText(Integer.parseInt(compNum.getText())*675 + "");
+				
+			}
+		});
+		*/
+		compNum.addActionListener(new java.awt.event.ActionListener() {
+		    public void actionPerformed(java.awt.event.ActionEvent e) {
+		    	compCost.setText(Integer.parseInt(compNum.getText())*675 + "");
+		    }
+		});
 		compNum.setBounds(6, 62, 130, 26);
 		compNum.setText("0");
 		contentPane.add(compNum);
