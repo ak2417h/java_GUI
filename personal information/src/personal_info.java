@@ -34,7 +34,7 @@ public class personal_info extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					personal_info frame = new personal_info();
+					personal_info frame = new personal_info(); 
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
