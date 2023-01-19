@@ -41,6 +41,10 @@ public class vendingMachine extends JFrame {
 	 * Create the frame.
 	 */
 	public vendingMachine() {
+		
+		double money = 0;
+		double bought = 0;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 659, 469);
 		contentPane = new JPanel();
@@ -65,6 +69,8 @@ public class vendingMachine extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		moneytxt = new JTextField();
+		moneytxt.setText("0");
+		money = Double.parseDouble(moneytxt.getText());
 		moneytxt.setBounds(271, 95, 86, 20);
 		contentPane.add(moneytxt);
 		moneytxt.setColumns(10);
@@ -81,34 +87,86 @@ public class vendingMachine extends JFrame {
 		panel.setLayout(null);
 		
 		JCheckBox spritecb = new JCheckBox("Sprite ($1.50)");
-		spritecb.setBounds(6, 26, 97, 23);
+		if (spritecb.isSelected()) {
+			if (money > bought + 1.5)
+				bought += 1.5;
+			else
+				spritecb.setSelected(false);
+		}
+		spritecb.setBounds(6, 26, 132, 23);
 		panel.add(spritecb);
 		
 		JCheckBox cokecb = new JCheckBox("Coke ($1.75)");
-		cokecb.setBounds(6, 76, 97, 23);
+		if (cokecb.isSelected()) {
+			if (money > bought + 1.75)
+				bought += 1.75;
+			else
+				cokecb.setSelected(false);
+		}
+		cokecb.setBounds(6, 76, 143, 23);
 		panel.add(cokecb);
 		
 		JCheckBox watercb = new JCheckBox("Water ($1.00)");
-		watercb.setBounds(176, 26, 97, 23);
+		if (watercb.isSelected()) {
+			if (money > bought + 1)
+				bought += 1;
+			else
+				watercb.setSelected(false);
+		}
+		watercb.setBounds(176, 26, 132, 23);
 		panel.add(watercb);
 		
 		JCheckBox lemoncb = new JCheckBox("Lemonade ($2.00)");
+		if (lemoncb.isSelected()) {
+			if (money > bought + 2)
+				bought += 2;
+			else
+				lemoncb.setSelected(false);
+		}
 		lemoncb.setBounds(333, 26, 132, 23);
 		panel.add(lemoncb);
 		
 		JCheckBox pepsicb = new JCheckBox("Pepsi ($1.50)");
-		pepsicb.setBounds(176, 76, 97, 23);
+		if (pepsicb.isSelected()) {
+			if (money > bought + 1.5)
+				bought += 1.5;
+			else
+				pepsicb.setSelected(false);
+		}
+		pepsicb.setBounds(176, 76, 132, 23);
 		panel.add(pepsicb);
 		
 		JCheckBox powercb = new JCheckBox("Powerade ($1.75)");
+		if (powercb.isSelected()) {
+			if (money > bought + 1.75)
+				bought += 1.75;
+			else
+				powercb.setSelected(false);
+		}
 		powercb.setBounds(333, 76, 132, 23);
 		panel.add(powercb);
 		
 		JButton purbtn = new JButton("Purchase");
+		purbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		purbtn.setBounds(51, 336, 89, 23);
 		contentPane.add(purbtn);
 		
 		JButton resetbtn = new JButton("Reset");
+		bought -= 9.5;
+		resetbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				spritecb.setSelected(false);
+				watercb.setSelected(false);
+				lemoncb.setSelected(false);
+				cokecb.setSelected(false);
+				pepsicb.setSelected(false);
+				powercb.setSelected(false);
+			}
+		});
+		changetxt.setText(Double.toString(bought));
 		resetbtn.setBounds(230, 336, 89, 23);
 		contentPane.add(resetbtn);
 		
