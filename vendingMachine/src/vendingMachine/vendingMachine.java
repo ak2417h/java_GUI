@@ -155,7 +155,6 @@ public class vendingMachine extends JFrame {
 		contentPane.add(purbtn);
 		
 		JButton resetbtn = new JButton("Reset");
-		bought -= 9.5;
 		resetbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				spritecb.setSelected(false);
@@ -166,6 +165,7 @@ public class vendingMachine extends JFrame {
 				powercb.setSelected(false);
 			}
 		});
+		bought -= 9.5;
 		changetxt.setText(Double.toString(bought));
 		resetbtn.setBounds(230, 336, 89, 23);
 		contentPane.add(resetbtn);
