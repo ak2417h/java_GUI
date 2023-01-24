@@ -116,6 +116,40 @@ public class tempConverter extends JFrame {
 		lblOutput.setBounds(129, 317, 71, 29);
 		contentPane.add(lblOutput);
 		
+		if (inc.isSelected()) {
+			if (outc.isSelected()) {
+				output.setText(input.getText());
+			}
+			else if (outf.isSelected()) {
+				output.setText(Double.parseDouble(input.getText())*1.8+32 + "");
+			}
+			else if (outk.isSelected()) {
+				output.setText(Double.parseDouble(input.getText())+273.15+"");
+			}
+		}
+		else if (inf.isSelected()) {
+			if (outc.isSelected()) {
+				
+			}
+			else if (outf.isSelected()) {
+				
+			}
+			else if (outk.isSelected()) {
+				
+			}
+		}
+		if (ink.isSelected()) {
+			if (outc.isSelected()) {
+				
+			}
+			else if (outf.isSelected()) {
+				
+			}
+			else if (outk.isSelected()) {
+				
+			}
+		}
+		
 		output = new JTextField();
 		output.setColumns(10);
 		output.setBounds(276, 323, 86, 20);
