@@ -6,10 +6,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JRadioButton;
+import javax.swing.JButton;
 
 public class tempConverter extends JFrame {
 
@@ -116,43 +120,61 @@ public class tempConverter extends JFrame {
 		lblOutput.setBounds(129, 317, 71, 29);
 		contentPane.add(lblOutput);
 		
-		if (inc.isSelected()) {
-			if (outc.isSelected()) {
-				output.setText(input.getText());
-			}
-			else if (outf.isSelected()) {
-				output.setText(Double.parseDouble(input.getText())*1.8+32 + "");
-			}
-			else if (outk.isSelected()) {
-				output.setText(Double.parseDouble(input.getText())+273.15+"");
-			}
-		}
-		else if (inf.isSelected()) {
-			if (outc.isSelected()) {
-				
-			}
-			else if (outf.isSelected()) {
-				
-			}
-			else if (outk.isSelected()) {
-				
-			}
-		}
-		if (ink.isSelected()) {
-			if (outc.isSelected()) {
-				
-			}
-			else if (outf.isSelected()) {
-				
-			}
-			else if (outk.isSelected()) {
-				
-			}
-		}
-		
 		output = new JTextField();
 		output.setColumns(10);
 		output.setBounds(276, 323, 86, 20);
 		contentPane.add(output);
+		
+		JButton btnNewButton = new JButton("Calculate");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (inc.isSelected()) {
+		    		System.out.println(10);
+		    		if (outc.isSelected()) {
+		    			output.setText(input.getText());
+		    		}
+		    		else if (outf.isSelected()) {
+		    			output.setText(Double.parseDouble(input.getText())*1.8+32 + "");
+		    		}
+		    		else if (outk.isSelected()) {
+		    			output.setText(Double.parseDouble(input.getText())+273.15+"");
+		    		}
+		    	}
+		    	else if (inf.isSelected()) {
+		    		if (outc.isSelected()) {
+		    			output.setText((Double.parseDouble(input.getText())-32)*5/9+"");
+		    		}
+		    		else if (outf.isSelected()) {
+		    			output.setText(input.getText());
+		    		}
+		    		else if (outk.isSelected()) {
+		    			output.setText((Double.parseDouble(input.getText())-32)/1.8+273.15+"");
+		    		}
+		    	}
+		    	if (ink.isSelected()) {
+		    		if (outc.isSelected()) {
+		    			output.setText(Double.parseDouble(input.getText())-273.15+"");
+		    		}
+		    		else if (outf.isSelected()) {
+		    			output.setText(1.8*(Double.parseDouble(input.getText())-273.15)+32+"");
+		    		}
+		    		else if (outk.isSelected()) {
+		    			output.setText(input.getText());
+		    		}
+		    	}
+					}
+				});
+				btnNewButton.setBounds(183, 345, 117, 29);
+				contentPane.add(btnNewButton);
+				
+				JButton btnExit = new JButton("Exit");
+				btnExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						System.exit(0);
+					}
+				});
+				btnExit.setBounds(312, 345, 117, 29);
+				contentPane.add(btnExit);
+
 	}
 }
