@@ -136,6 +136,10 @@ public class easyCalc extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				double num1 = Double.parseDouble(fn.getText());
 				double num2 = Double.parseDouble(sn.getText());
+				atxt.setText("");
+				stxt.setText("");
+				dtxt.setText("");
+				mtxt.setText("");
 				if (abtn.isSelected()) {
 					atxt.setText(num1+num2+"");
 				}
