@@ -124,7 +124,12 @@ public class studentInfo extends JFrame {
 		firstbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				index = 0;
-				sitxt.setText(list.get(0).firstname);
+				sitxt.setText(list.get(index).getStudentInfo());
+				fntxt.setText(list.get(index).getFirstname());
+				lntxt.setText(list.get(index).getLastname());
+				gtxt.setText(list.get(index).getGrade()+"");
+//				comboBox.set
+//				comboBox.setSelect(list.get(index).getGradelevel());
 			}
 		});
 		firstbtn.setBounds(10, 334, 89, 23);

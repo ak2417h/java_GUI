@@ -1,6 +1,6 @@
 
 public class Student {
-	public String studentInfo,firstname,lastname,gradelevel;
+	private String studentInfo,firstname,lastname,gradelevel;
 	private int grade;
 	
 	public Student(String id,String first,String last,int grade,String gradelvl) {
