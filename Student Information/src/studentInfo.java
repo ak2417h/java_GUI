@@ -128,22 +128,65 @@ public class studentInfo extends JFrame {
 				fntxt.setText(list.get(index).getFirstname());
 				lntxt.setText(list.get(index).getLastname());
 				gtxt.setText(list.get(index).getGrade()+"");
-//				comboBox.set
-//				comboBox.setSelect(list.get(index).getGradelevel());
+				int a = Arrays.asList(arr).indexOf(list.get(index).getGradelevel());
+				comboBox.setSelectedIndex(a);
 			}
 		});
 		firstbtn.setBounds(10, 334, 89, 23);
 		contentPane.add(firstbtn);
 		
 		JButton nextbtn = new JButton("Next");
+		nextbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (index < list.size()) {
+					index ++;
+					sitxt.setText(list.get(index).getStudentInfo());
+					fntxt.setText(list.get(index).getFirstname());
+					lntxt.setText(list.get(index).getLastname());
+					gtxt.setText(list.get(index).getGrade()+"");
+					int a = Arrays.asList(arr).indexOf(list.get(index).getGradelevel());
+					comboBox.setSelectedIndex(a);
+				}
+				else {
+					
+				}
+			}
+		});
 		nextbtn.setBounds(208, 334, 89, 23);
 		contentPane.add(nextbtn);
 		
 		JButton lastbtn = new JButton("Last");
+		lastbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index = list.size()-1;
+				sitxt.setText(list.get(index).getStudentInfo());
+				fntxt.setText(list.get(index).getFirstname());
+				lntxt.setText(list.get(index).getLastname());
+				gtxt.setText(list.get(index).getGrade()+"");
+				int a = Arrays.asList(arr).indexOf(list.get(index).getGradelevel());
+				comboBox.setSelectedIndex(a);
+			}
+		});
 		lastbtn.setBounds(109, 334, 89, 23);
 		contentPane.add(lastbtn);
 		
 		JButton previousbtn = new JButton("Previous");
+		previousbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (index >= 0) {
+					index--;
+					sitxt.setText(list.get(index).getStudentInfo());
+					fntxt.setText(list.get(index).getFirstname());
+					lntxt.setText(list.get(index).getLastname());
+					gtxt.setText(list.get(index).getGrade()+"");
+					int a = Arrays.asList(arr).indexOf(list.get(index).getGradelevel());
+					comboBox.setSelectedIndex(a);
+				}
+				else {
+					
+				}
+			}
+		});
 		previousbtn.setBounds(307, 334, 89, 23);
 		contentPane.add(previousbtn);
 		
@@ -152,6 +195,11 @@ public class studentInfo extends JFrame {
 		contentPane.add(newbtn);
 		
 		JButton savebtn = new JButton("Save");
+		savebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		savebtn.setBounds(208, 368, 89, 23);
 		contentPane.add(savebtn);
 	}
