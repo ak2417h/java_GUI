@@ -247,7 +247,19 @@ public class studentInfo extends JFrame {
 		JButton savebtn = new JButton("Save");
 		savebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				list.set(index, new Student(sitxt.getText(),fntxt.getText(),lntxt.getText(),Integer.parseInt(gtxt.getText()),comboBox.getSelectedItem().toString()));
+				String toAdd = "";
+				for (int i = 0; i < list.size(); i++) {
+					toAdd += list.get(i).getStudentInfo() + " " + list.get(i).getFirstname() + " " + list.get(i).getLastname() + " " + list.get(i).getGrade() + " " + list.get(i).getGradelevel() + "\n";
+				}
+				try {
+					PrintWriter pw = new PrintWriter("students.txt");
+					pw.write(toAdd);
+					pw.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		savebtn.setBounds(208, 368, 89, 23);
