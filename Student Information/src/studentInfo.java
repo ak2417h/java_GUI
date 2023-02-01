@@ -27,12 +27,10 @@ public class studentInfo extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					studentInfo frame = new studentInfo();
-					frame.setVisible(true);
 					Scanner scan = new Scanner(new File("students.txt"));
 					while(scan.hasNextLine()) {
 						String line = scan.nextLine();
@@ -45,6 +43,8 @@ public class studentInfo extends JFrame {
 						Student s = new Student(id,first,last,grade,gradelvl);
 						list.add(s);
 					}
+					studentInfo frame = new studentInfo();
+					frame.setVisible(true);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -96,27 +96,32 @@ public class studentInfo extends JFrame {
 		contentPane.add(lblNewLabel_1_4);
 		
 		sitxt = new JTextField();
+		sitxt.setText(list.get(0).getStudentInfo());
 		sitxt.setBounds(215, 122, 144, 20);
 		contentPane.add(sitxt);
 		sitxt.setColumns(10);
 		
 		fntxt = new JTextField();
 		fntxt.setColumns(10);
+		fntxt.setText(list.get(0).getFirstname());
 		fntxt.setBounds(215, 161, 144, 20);
 		contentPane.add(fntxt);
 		
 		lntxt = new JTextField();
 		lntxt.setColumns(10);
+		lntxt.setText(list.get(0).getLastname());
 		lntxt.setBounds(215, 200, 144, 20);
 		contentPane.add(lntxt);
 		
 		gtxt = new JTextField();
 		gtxt.setColumns(10);
+		gtxt.setText(list.get(0).getGrade() + "");
 		gtxt.setBounds(215, 239, 144, 20);
 		contentPane.add(gtxt);
 		
-		String[] arr = {"Freshmen","Sophomore","Junior","Senior"};
+		String[] arr = {"Freshman","Sophomore","Junior","Senior"};
 		JComboBox comboBox = new JComboBox(arr);
+		comboBox.setSelectedItem(Arrays.asList(arr).indexOf(list.get(index).getGradelevel()));
 		comboBox.setBounds(215, 277, 143, 22);
 		contentPane.add(comboBox);
 		
@@ -191,6 +196,23 @@ public class studentInfo extends JFrame {
 		contentPane.add(previousbtn);
 		
 		JButton newbtn = new JButton("New");
+		newbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				try {
+					FileWriter pw = new FileWriter("students.txt", true);
+					pw.append("\n" + sitxt.getText() + " " + fntxt.getText() + " " + lntxt.getText() + " " + gtxt.getText() + " " + comboBox.getSelectedItem().toString());
+					pw.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Student temp = new Student(sitxt.getText(),fntxt.getText(),lntxt.getText(),Integer.parseInt(gtxt.getText()),comboBox.getSelectedItem().toString());
+				list.add(temp);
+			}
+		});
 		newbtn.setBounds(406, 334, 89, 23);
 		contentPane.add(newbtn);
 		
