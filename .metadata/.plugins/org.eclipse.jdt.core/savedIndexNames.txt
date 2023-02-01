@@ -1,31 +1,18 @@
 INDEX VERSION 1.131+/Users/andrew/Downloads/compsci/.metadata/.plugins/org.eclipse.jdt.core
 2627942032.index
 713028962.index
-<<<<<<< HEAD
-1285847342.index
-553158095.index
-254333118.index
-1755064938.index
-=======
 758063911.index
 1285847342.index
 553158095.index
 1755064938.index
 254333118.index
->>>>>>> main
 1010663865.index
 1865797976.index
 903600538.index
 994310321.index
-<<<<<<< HEAD
-88576649.index
-3772576166.index
-3813252724.index
-=======
 3152117774.index
 88576649.index
 3772576166.index
 3813252724.index
 1671941534.index
->>>>>>> main
 1670551227.index

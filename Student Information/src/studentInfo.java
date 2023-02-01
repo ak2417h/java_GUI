@@ -31,18 +31,6 @@ public class studentInfo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Scanner scan = new Scanner(new File("students.txt"));
-					while(scan.hasNextLine()) {
-						String line = scan.nextLine();
-						String[] alist = line.split(" ");
-						String id = alist[0];
-						String first = alist[1];
-						String last = alist[2];
-						int grade = Integer.parseInt(alist[3]);
-						String gradelvl = alist[4];
-						Student s = new Student(id,first,last,grade,gradelvl);
-						list.add(s);
-					}
 					studentInfo frame = new studentInfo();
 					frame.setVisible(true);
 					
@@ -57,6 +45,27 @@ public class studentInfo extends JFrame {
 	 * Create the frame.
 	 */
 	public studentInfo() {
+		
+		Scanner scan;
+		try {
+			scan = new Scanner(new File("students.txt"));
+			while(scan.hasNextLine()) {
+				String line = scan.nextLine();
+				String[] alist = line.split(" ");
+				String id = alist[0];
+				String first = alist[1];
+				String last = alist[2];
+				int grade = Integer.parseInt(alist[3]);
+				String gradelvl = alist[4];
+				Student s = new Student(id,first,last,grade,gradelvl);
+				list.add(s);
+			}
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 552, 481);
 		contentPane = new JPanel();
@@ -198,9 +207,10 @@ public class studentInfo extends JFrame {
 		JButton newbtn = new JButton("New");
 		newbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
+				/*
 				try {
-					FileWriter pw = new FileWriter("students.txt", true);
-					pw.append("\n" + sitxt.getText() + " " + fntxt.getText() + " " + lntxt.getText() + " " + gtxt.getText() + " " + comboBox.getSelectedItem().toString());
+					FileWriter pw = new FileWriter("students.txt");
+					pw.write("\n" + sitxt.getText() + " " + fntxt.getText() + " " + lntxt.getText() + " " + gtxt.getText() + " " + comboBox.getSelectedItem().toString());
 					pw.close();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -211,6 +221,24 @@ public class studentInfo extends JFrame {
 				}
 				Student temp = new Student(sitxt.getText(),fntxt.getText(),lntxt.getText(),Integer.parseInt(gtxt.getText()),comboBox.getSelectedItem().toString());
 				list.add(temp);
+				*/
+//				/*
+				Student temp = new Student(sitxt.getText(),fntxt.getText(),lntxt.getText(),Integer.parseInt(gtxt.getText()),comboBox.getSelectedItem().toString());
+				list.add(temp);
+				String toAdd = "";
+				for (int i = 0; i < list.size(); i++) {
+					toAdd += list.get(i).getStudentInfo() + " " + list.get(i).getFirstname() + " " + list.get(i).getLastname() + " " + list.get(i).getGrade() + " " + list.get(i).getGradelevel() + "\n";
+				}
+				try {
+					PrintWriter pw = new PrintWriter("students.txt");
+					pw.write(toAdd);
+					pw.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+//				*/
 			}
 		});
 		newbtn.setBounds(406, 334, 89, 23);
