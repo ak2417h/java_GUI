@@ -46,7 +46,7 @@ public class carInventory extends JFrame {
 	 */
 	public carInventory() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 619, 437);
+		setBounds(100, 100, 680, 437);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -137,28 +137,40 @@ public class carInventory extends JFrame {
 		});
 		btnNewButton.setBounds(24, 354, 117, 29);
 		contentPane.add(btnNewButton);
+//		/*
+//		*/
+		/*
+		JLabel piclabel = new JLabel();
+		piclabel.setBounds(334, 84, 221, 240);
+		contentPane.add(piclabel);
+		
+		Image img = new ImageIcon(this.getClass().getResource("images.jfif")).getImage();
+		Image img2 = img.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(),Image.SCALE_SMOOTH);
+		piclabel.setIcon(new ImageIcon(img2));
+		*/
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(366, 69, 308, 273);
+		contentPane.add(panel);
 		
 		JButton spbtn = new JButton("Show Picture");
 		spbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JLabel piclabel = new JLabel(new ImageIcon("/Users/andrew/Downloads/compsci/BMI/images/images.jfif"));
+				JLabel piclabel = new JLabel(new ImageIcon("images/"+ maketxt.getText().toLowerCase() +".jfif"));
+				piclabel.setBounds(400, 80, 213, 250);
 				piclabel.setVisible(true);
-				piclabel.setBounds(334, 84, 221, 240);
-				contentPane.add(piclabel);
+//				piclabel.setSize(200,200);
+				panel.add(piclabel);
 			}
 			
 		});
 		spbtn.setBounds(444, 354, 117, 29);
 		contentPane.add(spbtn);
 		
-		/*
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setBounds(334, 84, 221, 240);
-		contentPane.add(lblNewLabel);
 		
-		Image img = new ImageIcon(this.getClass().getResource("images.jfif")).getImage();
-		Image img2 = img.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(),Image.SCALE_SMOOTH);
-		lblNewLabel.setIcon(new ImageIcon(img2));
+		
+		
+		/*
 		*/
 	}
 }
