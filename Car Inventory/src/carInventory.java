@@ -7,18 +7,22 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class carInventory extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField vitxt;
+	private JTextField maketxt;
+	private JTextField modeltxt;
+	private JTextField yeartxt;
+	private JTextField pricetxt;
 	private JTextField textField_5;
 
 	/**
@@ -79,37 +83,41 @@ public class carInventory extends JFrame {
 		lblPrice.setBounds(51, 296, 171, 46);
 		contentPane.add(lblPrice);
 		
-		textField = new JTextField();
-		textField.setBounds(203, 77, 130, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		vitxt = new JTextField();
+		vitxt.setBounds(203, 77, 130, 26);
+		contentPane.add(vitxt);
+		vitxt.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(203, 133, 130, 26);
-		contentPane.add(textField_1);
+		maketxt = new JTextField();
+		maketxt.setColumns(10);
+		maketxt.setBounds(203, 133, 130, 26);
+		contentPane.add(maketxt);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(203, 189, 130, 26);
-		contentPane.add(textField_2);
+		modeltxt = new JTextField();
+		modeltxt.setColumns(10);
+		modeltxt.setBounds(203, 189, 130, 26);
+		contentPane.add(modeltxt);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(203, 247, 130, 26);
-		contentPane.add(textField_3);
+		yeartxt = new JTextField();
+		yeartxt.setColumns(10);
+		yeartxt.setBounds(203, 247, 130, 26);
+		contentPane.add(yeartxt);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(203, 307, 130, 26);
-		contentPane.add(textField_4);
+		pricetxt = new JTextField();
+		pricetxt.setColumns(10);
+		pricetxt.setBounds(203, 307, 130, 26);
+		contentPane.add(pricetxt);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(168, 354, 130, 26);
+		textField_5.setBounds(166, 354, 130, 26);
 		contentPane.add(textField_5);
 		
 		JButton btnNewButton = new JButton("Search");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setBounds(24, 354, 117, 29);
 		contentPane.add(btnNewButton);
 		
@@ -118,5 +126,19 @@ public class carInventory extends JFrame {
 		picLabel.setBounds(24, 354, -117, 29);
 		picLabel.setVisible(true); 
 		contentPane.add(picLabel);
+		
+		JButton spbtn = new JButton("Show Picture");
+		spbtn.setBounds(444, 354, 117, 29);
+		contentPane.add(spbtn);
+		
+		/*
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setBounds(334, 84, 221, 240);
+		contentPane.add(lblNewLabel);
+		
+		Image img = new ImageIcon(this.getClass().getResource("images.jfif")).getImage();
+		Image img2 = img.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(),Image.SCALE_SMOOTH);
+		lblNewLabel.setIcon(new ImageIcon(img2));
+		*/
 	}
 }
