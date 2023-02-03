@@ -146,6 +146,7 @@ public class carInventory extends JFrame {
 				piclabel.setBounds(334, 84, 221, 240);
 				contentPane.add(piclabel);
 			}
+			
 		});
 		spbtn.setBounds(444, 354, 117, 29);
 		contentPane.add(spbtn);
