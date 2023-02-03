@@ -47,7 +47,7 @@ public class BMI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setBounds(334, 84, 221, 240);
 		contentPane.add(lblNewLabel);
 		
