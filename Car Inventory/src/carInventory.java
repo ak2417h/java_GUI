@@ -23,7 +23,7 @@ public class carInventory extends JFrame {
 	private JTextField modeltxt;
 	private JTextField yeartxt;
 	private JTextField pricetxt;
-	private JTextField textField_5;
+	private JTextField searchtxt;
 
 	/**
 	 * Launch the application.
@@ -108,14 +108,31 @@ public class carInventory extends JFrame {
 		pricetxt.setBounds(203, 307, 130, 26);
 		contentPane.add(pricetxt);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(166, 354, 130, 26);
-		contentPane.add(textField_5);
+		searchtxt = new JTextField();
+		searchtxt.setColumns(10);
+		searchtxt.setBounds(166, 354, 130, 26);
+		contentPane.add(searchtxt);
 		
 		JButton btnNewButton = new JButton("Search");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Scanner scan = new Scanner(new File("cars.txt"));
+					while(scan.hasNextLine()) {
+						String[] arr = scan.nextLine().split(",");
+						if (searchtxt.getText().equals(arr[0])) {
+							vitxt.setText(arr[0]);
+							maketxt.setText(arr[1]);
+							modeltxt.setText(arr[2]);
+							yeartxt.setText(arr[3]);
+							pricetxt.setText(arr[4]);
+						}
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnNewButton.setBounds(24, 354, 117, 29);
