@@ -137,17 +137,7 @@ public class carInventory extends JFrame {
 		});
 		btnNewButton.setBounds(24, 354, 117, 29);
 		contentPane.add(btnNewButton);
-//		/*
-//		*/
-		/*
-		JLabel piclabel = new JLabel();
-		piclabel.setBounds(334, 84, 221, 240);
-		contentPane.add(piclabel);
 		
-		Image img = new ImageIcon(this.getClass().getResource("images.jfif")).getImage();
-		Image img2 = img.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(),Image.SCALE_SMOOTH);
-		piclabel.setIcon(new ImageIcon(img2));
-		*/
 		JLabel piclabel = new JLabel("");
 		piclabel.setBounds(370, 83, 270, 240);
 		contentPane.add(piclabel);
@@ -155,18 +145,9 @@ public class carInventory extends JFrame {
 		JButton spbtn = new JButton("Show Picture");
 		spbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-////				JLabel piclabel = new JLabel(new ImageIcon("images/"+ maketxt.getText().toLowerCase() +".jfif"));
-//				piclabel.setBounds(366, 69, 308, 273);
-//				piclabel.setVisible(true);
-////				piclabel.setSize(200,200);
-//				contentPane.add(piclabel);
-				
-				
 				Image img = new ImageIcon("images/"+ maketxt.getText().toLowerCase() +".jfif").getImage();
-//				Image img2 = img.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(),Image.SCALE_SMOOTH);
 				piclabel.setIcon(new ImageIcon(img));
 				piclabel.setSize(piclabel.getWidth(), piclabel.getHeight());
-//				contentPane.add(piclabel);
 			}
 			
 		});
