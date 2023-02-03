@@ -138,13 +138,15 @@ public class carInventory extends JFrame {
 		btnNewButton.setBounds(24, 354, 117, 29);
 		contentPane.add(btnNewButton);
 		
-		JLabel picLabel = new JLabel(new ImageIcon("/Users/andrew/Downloads/compsci/BMI/images/images.jfif"));
-		picLabel.setSize(500*2,500);
-		picLabel.setBounds(24, 354, -117, 29);
-		picLabel.setVisible(true); 
-		contentPane.add(picLabel);
-		
 		JButton spbtn = new JButton("Show Picture");
+		spbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JLabel piclabel = new JLabel(new ImageIcon("/Users/andrew/Downloads/compsci/BMI/images/images.jfif"));
+				piclabel.setVisible(true);
+				piclabel.setBounds(334, 84, 221, 240);
+				contentPane.add(piclabel);
+			}
+		});
 		spbtn.setBounds(444, 354, 117, 29);
 		contentPane.add(spbtn);
 		
