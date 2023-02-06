@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Window.Type;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -220,10 +222,15 @@ public class personalInfo extends JFrame {
 				if (al.isEmpty()) {
 					al.add("Form Successfully Submitted");
 				}
+				String temp = "";
+				for (String i : al) {
+					temp += i + "\n";
+				}
+				JOptionPane.showMessageDialog(null, temp);
 			}
 		});
 		btnSubmit.setBounds(529, 343, 89, 23);
 		contentPane.add(btnSubmit);
-		
+				
 	}
 }
