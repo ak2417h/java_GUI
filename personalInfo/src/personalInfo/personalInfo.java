@@ -193,12 +193,37 @@ public class personalInfo extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<String> al = new ArrayList<String>();
-				if (fntxt.getText() == "") {
+				if (fntxt.getText().equals("")) {
 					al.add("Please Enter First Name");
+				}
+				if (lntxt.getText().equals("")) {
+					al.add("Please Enter Last Name");
+				}
+				if (stxt.getText().equals("")) {
+					al.add("Please Enter Street Address");
+				}
+				if (ctxt.getText().equals("")) {
+					al.add("Please Enter City");
+				}
+				if (pntxt.getText().equals("")) {
+					al.add("Please Enter Phone Number");
+				}
+				if (etxt.getText().equals("")) {
+					al.add("Please Enter Email");
+				}
+				if (!femalebtn.isSelected() && !malebtn.isSelected()) {
+					al.add("Please Enter Your Gender");
+				}
+				if (comboBox.getSelectedIndex() == 0) {
+					al.add("Please select a state");
+				}
+				if (al.isEmpty()) {
+					al.add("Form Successfully Submitted");
 				}
 			}
 		});
 		btnSubmit.setBounds(529, 343, 89, 23);
 		contentPane.add(btnSubmit);
+		
 	}
 }
