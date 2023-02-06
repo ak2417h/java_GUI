@@ -12,8 +12,10 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class personalInfo extends JFrame {
@@ -130,13 +132,31 @@ public class personalInfo extends JFrame {
 		etxt.setBounds(402, 85, 109, 20);
 		panel.add(etxt);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("male");
-		rdbtnNewRadioButton.setBounds(379, 128, 54, 23);
-		panel.add(rdbtnNewRadioButton);
+		JRadioButton malebtn = new JRadioButton("male");
+		JRadioButton femalebtn = new JRadioButton("female");
+		femalebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (femalebtn.isSelected()) {
+					malebtn.setSelected(false);
+				}
+			}
+		});
+		malebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (malebtn.isSelected()) {
+					femalebtn.setSelected(false);
+				}
+			}
+		});
+		malebtn.setBounds(379, 128, 54, 23);
+		panel.add(malebtn);
 		
-		JRadioButton rdbtnFemale = new JRadioButton("female");
-		rdbtnFemale.setBounds(444, 128, 109, 23);
-		panel.add(rdbtnFemale);
+		femalebtn.setBounds(444, 128, 109, 23);
+		panel.add(femalebtn);
+		
+//		ButtonGroup bg = new ButtonGroup();
+//		bg.add(femalebtn);
+//		bg.add(malebtn);
 		
 		String[] arr = {"Select state:","TX","CA","NY","TN","GA"};
 		JComboBox comboBox = new JComboBox(arr);
@@ -146,6 +166,15 @@ public class personalInfo extends JFrame {
 		JButton btnNewButton = new JButton("Clear");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				fntxt.setText("");
+				lntxt.setText("");
+				stxt.setText("");
+				ctxt.setText("");
+				pntxt.setText("");
+				etxt.setText("");
+				comboBox.setSelectedIndex(0);
+				malebtn.setSelected(false);
+				femalebtn.setSelected(false);
 			}
 		});
 		btnNewButton.setBounds(20, 343, 89, 23);
@@ -163,6 +192,10 @@ public class personalInfo extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> al = new ArrayList<String>();
+				if (fntxt.getText() == "") {
+					al.add("Please Enter First Name");
+				}
 			}
 		});
 		btnSubmit.setBounds(529, 343, 89, 23);
