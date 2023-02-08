@@ -97,6 +97,7 @@ public class signup extends JFrame {
 		JButton btn = new JButton("Sign Up");
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btn.setBounds(133, 216, 89, 23);
