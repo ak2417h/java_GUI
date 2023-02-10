@@ -7,10 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.Image;
 
-public class electronicsStore extends JFrame {
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class electronicsStore extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField pidtxt;
@@ -19,6 +24,7 @@ public class electronicsStore extends JFrame {
 	private JTextField qtxt;
 	private JTextField pricetxt;
 	private JTextField colortxt;
+	
 
 	/**
 	 * Launch the application.
@@ -39,7 +45,22 @@ public class electronicsStore extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	private List<String[]> al = new ArrayList<String[]>();
+	
+	private int index = 0;
+	
 	public electronicsStore() {
+		try {
+			Scanner scan = new Scanner(new File("computer_parts.txt"));
+			while (scan.hasNextLine()) {
+				al.add(scan.nextLine().split(","));
+			}
+		}	
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 619, 419);
 		contentPane = new JPanel();
@@ -117,23 +138,111 @@ public class electronicsStore extends JFrame {
 		lblNewLabel_2.setBounds(365, 82, 214, 201);
 		contentPane.add(lblNewLabel_2);
 		
+		pidtxt.setText(al.get(index)[0]);
+		nametxt.setText(al.get(index)[1]);
+		desctxt.setText(al.get(index)[2]);
+		qtxt.setText(al.get(index)[3]);
+		pricetxt.setText(al.get(index)[4]);
+		colortxt.setText(al.get(index)[5]);
+		Image img = new ImageIcon("images/"+ nametxt.getText() +".jpg").getImage().getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+		lblNewLabel_2.setIcon(new ImageIcon(img));
+		
 		JButton btnNewButton = new JButton("First");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index = 0;
+				pidtxt.setText(al.get(index)[0]);
+				nametxt.setText(al.get(index)[1]);
+				desctxt.setText(al.get(index)[2]);
+				qtxt.setText(al.get(index)[3]);
+				pricetxt.setText(al.get(index)[4]);
+				colortxt.setText(al.get(index)[5]);
+				Image img = new ImageIcon("images/"+ nametxt.getText() +".jpg").getImage().getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+				lblNewLabel_2.setIcon(new ImageIcon(img));
+			}
+		});
 		btnNewButton.setBounds(10, 320, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton(">>>");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (index == al.size()-1) {
+					
+				}
+				else {
+					index ++;
+					pidtxt.setText(al.get(index)[0]);
+					nametxt.setText(al.get(index)[1]);
+					desctxt.setText(al.get(index)[2]);
+					qtxt.setText(al.get(index)[3]);
+					pricetxt.setText(al.get(index)[4]);
+					colortxt.setText(al.get(index)[5]);
+					Image img = new ImageIcon("images/"+ nametxt.getText() +".jpg").getImage().getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+					lblNewLabel_2.setIcon(new ImageIcon(img));
+				}
+			}
+		});
 		btnNewButton_1.setBounds(109, 320, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("<<<");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (index == 0) {
+					
+				}
+				else {
+					index --;
+					pidtxt.setText(al.get(index)[0]);
+					nametxt.setText(al.get(index)[1]);
+					desctxt.setText(al.get(index)[2]);
+					qtxt.setText(al.get(index)[3]);
+					pricetxt.setText(al.get(index)[4]);
+					colortxt.setText(al.get(index)[5]);
+					Image img = new ImageIcon("images/"+ nametxt.getText() +".jpg").getImage().getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+					lblNewLabel_2.setIcon(new ImageIcon(img));
+				}
+			}
+		});
 		btnNewButton_2.setBounds(208, 320, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnLast = new JButton("Last");
+		btnLast.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index = al.size()-1;
+				pidtxt.setText(al.get(index)[0]);
+				nametxt.setText(al.get(index)[1]);
+				desctxt.setText(al.get(index)[2]);
+				qtxt.setText(al.get(index)[3]);
+				pricetxt.setText(al.get(index)[4]);
+				colortxt.setText(al.get(index)[5]);
+				Image img = new ImageIcon("images/"+ nametxt.getText() +".jpg").getImage().getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+				lblNewLabel_2.setIcon(new ImageIcon(img));
+			}
+		});
 		btnLast.setBounds(307, 320, 89, 23);
 		contentPane.add(btnLast);
 		
 		JButton btnNew = new JButton("New");
+		btnNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileWriter pw = new FileWriter("computer_parts.txt", true);
+					pw.append("\n"+pidtxt.getText()+","+nametxt.getText()+","+desctxt.getText()+","+qtxt.getText()+","+pricetxt.getText()+","+colortxt.getText());
+					pw.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				String[] temp = {pidtxt.getText(),nametxt.getText(),desctxt.getText(),qtxt.getText(),pricetxt.getText(),colortxt.getText()};
+				al.add(temp);
+			}
+		});
 		btnNew.setBounds(406, 320, 89, 23);
 		contentPane.add(btnNew);
 		
