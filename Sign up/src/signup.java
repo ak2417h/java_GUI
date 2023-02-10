@@ -121,7 +121,7 @@ public class signup extends JFrame {
 							}
 						}
 						FileWriter fw = new FileWriter("customer.txt",true);
-						fw.append(ncfn.getText()+","+ncln.getText()+",");
+						fw.append(ncfn.getText()+","+ncln.getText()+","+ncpw.getPassword()+"\n");
 						fw.close();
 					}
 					catch(Exception e1) {
