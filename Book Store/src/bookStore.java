@@ -117,5 +117,21 @@ public class bookStore extends JFrame {
 		JButton btnRemove = new JButton("Remove");
 		btnRemove.setBounds(10, 329, 89, 23);
 		contentPane.add(btnRemove);
+		
+		JButton btnFirst = new JButton("First");
+		btnFirst.setBounds(136, 314, 89, 23);
+		contentPane.add(btnFirst);
+		
+		JButton btnLast = new JButton("Next");
+		btnLast.setBounds(238, 314, 89, 23);
+		contentPane.add(btnLast);
+		
+		JButton btnPrevious = new JButton("Previous");
+		btnPrevious.setBounds(337, 314, 89, 23);
+		contentPane.add(btnPrevious);
+		
+		JButton btnLast_1 = new JButton("Last");
+		btnLast_1.setBounds(436, 314, 89, 23);
+		contentPane.add(btnLast_1);
 	}
 }
