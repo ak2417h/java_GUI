@@ -9,6 +9,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class bookStore extends JFrame {
 
@@ -104,9 +107,20 @@ public class bookStore extends JFrame {
 		textField_4.setBounds(104, 218, 86, 20);
 		contentPane.add(textField_4);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(238, 71, 339, 202);
+		contentPane.add(scrollPane);
+		
 		table = new JTable();
-		table.setBounds(238, 71, 339, 202);
-		contentPane.add(table);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		scrollPane.setViewportView(table);
+		
+		model = (DefaultTableModel) table.getModel();
 		
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.setBounds(10, 261, 89, 23);
@@ -135,8 +149,6 @@ public class bookStore extends JFrame {
 		JButton btnLast_1 = new JButton("Last");
 		btnLast_1.setBounds(436, 314, 89, 23);
 		contentPane.add(btnLast_1);
-		
-		model = (DefaultTableModel) table.getModel();
 		String[] headers = {"BookID","Title","Author","Price","Copies"};
 		model.setColumnIdentifiers(headers);
 	}
