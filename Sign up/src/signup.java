@@ -72,18 +72,18 @@ public class signup extends JFrame {
 			panel.setLayout(null);
 			
 			JLabel lblNewLabel = new JLabel("First Name");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			lblNewLabel.setBounds(10, 29, 82, 14);
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			panel.add(lblNewLabel);
 			
 			JLabel lblPassword = new JLabel("Password");
-			lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			lblPassword.setBounds(10, 122, 82, 14);
+			lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			panel.add(lblPassword);
 			
 			JLabel lblLastName = new JLabel("Last Name");
-			lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			lblLastName.setBounds(10, 74, 82, 14);
+			lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			panel.add(lblLastName);
 			
 			ncfn = new JTextField();
@@ -92,8 +92,8 @@ public class signup extends JFrame {
 			ncfn.setColumns(10);
 			
 			ncln = new JTextField();
-			ncln.setColumns(10);
 			ncln.setBounds(151, 74, 126, 20);
+			ncln.setColumns(10);
 			panel.add(ncln);
 			
 			ncpw = new JPasswordField();
@@ -101,8 +101,8 @@ public class signup extends JFrame {
 			panel.add(ncpw);
 			
 			JLabel lblConfirmPassword = new JLabel("Confirm Password");
-			lblConfirmPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			lblConfirmPassword.setBounds(10, 168, 126, 14);
+			lblConfirmPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			panel.add(lblConfirmPassword);
 			
 			nccp = new JPasswordField();
@@ -110,26 +110,38 @@ public class signup extends JFrame {
 			panel.add(nccp);
 			
 			JButton signup = new JButton("Sign Up");
+			signup.setBounds(132, 203, 89, 23);
 			signup.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						Scanner scan = new Scanner(file);
+						boolean add = true;
 						while (scan.hasNextLine()) {
 							String[] temp = scan.nextLine().split(",");
 							if (temp[0].equals(ncfn.getText())&&temp[1].equals(ncln.getText())) {
 								JOptionPane.showMessageDialog(null, "User Already Exists");
+								add = false;
 							}
 						}
-						FileWriter fw = new FileWriter("customer.txt",true);
-						fw.append(ncfn.getText()+","+ncln.getText()+","+String.valueOf(ncpw.getPassword())+"\n");
-						fw.close();
+						if (add) {
+							if (String.valueOf(ncpw.getPassword()).equals(String.valueOf(nccp.getPassword()))) {
+								FileWriter fw = new FileWriter("customer.txt",true);
+								fw.append(ncfn.getText()+","+ncln.getText()+","+String.valueOf(ncpw.getPassword())+"\n");
+								fw.close();
+								JOptionPane.showMessageDialog(null, "Sign Up Successful");								
+							}
+							else {
+								ncpw.setText("");
+								nccp.setText("");
+								JOptionPane.showMessageDialog(null, "Passwords Do Not Match");
+							}
+						}
 					}
 					catch(Exception e1) {
 						e1.printStackTrace();
 					}
 				}
 			});
-			signup.setBounds(133, 216, 89, 23);
 			panel.add(signup);
 			
 			JPanel panel1= new JPanel();
@@ -137,6 +149,35 @@ public class signup extends JFrame {
 			panel1.setLayout(null);
 			
 			JButton login = new JButton("Login");
+			login.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						Scanner scan = new Scanner(file);
+						boolean _new = true;
+						while (scan.hasNextLine()) {
+							String[] temp = scan.nextLine().split(",");
+							if (temp[0].equals(ecfn.getText()) && temp[1].equals(ecln.getText())) {
+								if (temp[2].equals(String.valueOf(ecpw.getPassword()))){
+									JOptionPane.showMessageDialog(null, "Login successful");
+									_new = false;									
+								}
+								else if (!temp[2].equals(String.valueOf(ecpw.getPassword()))) {
+									JOptionPane.showMessageDialog(null, "Incorrect Password");
+									_new = false;
+								}
+							}
+								
+						}
+						if (_new) {
+							JOptionPane.showMessageDialog(null, "No User Found. Please Sign Up");
+						}
+						
+					}
+					catch (Exception e2) {
+						
+					}
+				}
+			});
 			login.setBounds(133, 167, 89, 23);
 			panel1.add(login);
 			
