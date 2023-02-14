@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -18,6 +19,7 @@ public class bookStore extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTable table;
+	private DefaultTableModel model;
 
 	/**
 	 * Launch the application.
@@ -133,5 +135,9 @@ public class bookStore extends JFrame {
 		JButton btnLast_1 = new JButton("Last");
 		btnLast_1.setBounds(436, 314, 89, 23);
 		contentPane.add(btnLast_1);
+		
+		model = (DefaultTableModel) table.getModel();
+		String[] headers = {"BookID","Title","Author","Price","Copies"};
+		model.setColumnIdentifiers(headers);
 	}
 }
