@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
+import java.util.*;
 
 public class bookStore extends JFrame {
 
@@ -149,6 +151,8 @@ public class bookStore extends JFrame {
 		JButton btnLast_1 = new JButton("Last");
 		btnLast_1.setBounds(436, 314, 89, 23);
 		contentPane.add(btnLast_1);
+		
+		model = (DefaultTableModel) table.getModel();
 		String[] headers = {"BookID","Title","Author","Price","Copies"};
 		model.setColumnIdentifiers(headers);
 	}
