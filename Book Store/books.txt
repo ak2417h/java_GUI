@@ -1,1 +1,10 @@
-001,Harry Potter and the Sorcerer's Stone,J.K. Rowling,$14.97,10
+001,Harry Potter and the Sorcerer's Stone,J.K. Rowling,$6.98,10
+002,Harry Potter and the Chamber of Secrets,J.K. Rowling,$6.98,15
+003,Harry Potter and the Order of the Phoenix,J.K. Rowling,$6.98,8
+004,Harry Potter and the Deathly Hallows,J.K. Rowling,$6.98,12
+005,Diary of a Wimpy Kid (Diary of a Wimpy Kid #1),Jeff Kinney,$10.93,10
+006,Rodrick Rules (Diary of a Wimpy Kid #2),Jeff Kinney,$9.48,6
+007,Cabin Fever (Diary of a Wimpy Kid #6),Jeff Kinney,$9.48,14
+008,The Great Gatsby,F. Scott Fitzgerald,$5.97,20
+009,Steelheart,Brandon Sanderson,$21,5
+010,Wonder,R. J. Palacio,$9.4,10
