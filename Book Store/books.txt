@@ -8,3 +8,8 @@
 008,The Great Gatsby,F. Scott Fitzgerald,$5.97,20
 009,Steelheart,Brandon Sanderson,$21,5
 010,Wonder,R. J. Palacio,$9.4,10
+011,The Hunger Games,Suzanne Collins,$13.99,10
+012,Romeo And juliet,William Shakespeare,$5.16,20
+013,Macbeth,William Shakespeare,$9.95,15
+014,Old School (Diary of a Wimpy Kid #10),Jeff Kinney,$8.78,15
+015,Divergent,Veronica Roth,$9.06,17
