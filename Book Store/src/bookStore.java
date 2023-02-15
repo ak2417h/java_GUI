@@ -119,7 +119,17 @@ public class bookStore extends JFrame {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				int row = table.getSelectedRow();
+				String b = (String) table.getValueAt(row, 0);
+				String t = (String) table.getValueAt(row, 1);
+				String a = (String) table.getValueAt(row, 2);
+				String p = (String) table.getValueAt(row, 3);
+				String c = (String) table.getValueAt(row, 4);
+				btxt.setText(b);
+				ttxt.setText(t);
+				atxt.setText(a);
+				ptxt.setText(p);
+				ctxt.setText(c);
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -185,6 +195,24 @@ public class bookStore extends JFrame {
 		JButton btnLast_1 = new JButton("Last");
 		btnLast_1.setBounds(436, 314, 89, 23);
 		contentPane.add(btnLast_1);
+		
+		JButton btnLoad = new JButton("Load");
+		btnLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Scanner scan = new Scanner(new File("books.txt"));
+					while (scan.hasNextLine()) {
+						String[] arr = scan.nextLine().split(",");
+						model.addRow(arr);
+					}
+				}
+				catch (Exception e1){
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnLoad.setBounds(488, 26, 89, 23);
+		contentPane.add(btnLoad);
 		
 		model = (DefaultTableModel) table.getModel();
 		String[] headers = {"BookID","Title","Author","Price","Copies"};
