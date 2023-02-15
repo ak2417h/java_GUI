@@ -14,15 +14,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class bookStore extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField btxt;
+	private JTextField ttxt;
+	private JTextField atxt;
+	private JTextField ptxt;
+	private JTextField ctxt;
 	private JTable table;
 	private DefaultTableModel model;
 
@@ -64,50 +66,50 @@ public class bookStore extends JFrame {
 		lblNewLabel_1.setBounds(10, 71, 84, 25);
 		contentPane.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(104, 75, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		btxt = new JTextField();
+		btxt.setBounds(104, 75, 86, 20);
+		contentPane.add(btxt);
+		btxt.setColumns(10);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Title");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_1.setBounds(10, 107, 84, 25);
 		contentPane.add(lblNewLabel_1_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(104, 111, 86, 20);
-		contentPane.add(textField_1);
+		ttxt = new JTextField();
+		ttxt.setColumns(10);
+		ttxt.setBounds(104, 111, 86, 20);
+		contentPane.add(ttxt);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Author");
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_2.setBounds(10, 143, 84, 25);
 		contentPane.add(lblNewLabel_1_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(104, 147, 86, 20);
-		contentPane.add(textField_2);
+		atxt = new JTextField();
+		atxt.setColumns(10);
+		atxt.setBounds(104, 147, 86, 20);
+		contentPane.add(atxt);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("Price");
 		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_3.setBounds(10, 179, 84, 25);
 		contentPane.add(lblNewLabel_1_3);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(104, 183, 86, 20);
-		contentPane.add(textField_3);
+		ptxt = new JTextField();
+		ptxt.setColumns(10);
+		ptxt.setBounds(104, 183, 86, 20);
+		contentPane.add(ptxt);
 		
 		JLabel lblNewLabel_1_4 = new JLabel("Copies");
 		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_4.setBounds(10, 214, 84, 25);
 		contentPane.add(lblNewLabel_1_4);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(104, 218, 86, 20);
-		contentPane.add(textField_4);
+		ctxt = new JTextField();
+		ctxt.setColumns(10);
+		ctxt.setBounds(104, 218, 86, 20);
+		contentPane.add(ctxt);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(238, 71, 339, 202);
@@ -125,6 +127,17 @@ public class bookStore extends JFrame {
 		model = (DefaultTableModel) table.getModel();
 		
 		JButton btnNewButton = new JButton("Add");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String b = btxt.getText();
+				String t = ttxt.getText();
+				String a = atxt.getText();
+				String p = ptxt.getText();
+				String c = ctxt.getText();
+				String[] newRow = {b,t,a,p,c};
+				model.addRow(newRow);
+			}
+		});
 		btnNewButton.setBounds(10, 261, 89, 23);
 		contentPane.add(btnNewButton);
 		
