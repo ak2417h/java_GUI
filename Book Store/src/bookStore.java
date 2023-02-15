@@ -183,6 +183,17 @@ public class bookStore extends JFrame {
 		JButton btnFirst = new JButton("First");
 		btnFirst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int row = 0;
+				String b = (String) table.getValueAt(row, 0);
+				String t = (String) table.getValueAt(row, 1);
+				String a = (String) table.getValueAt(row, 2);
+				String p = (String) table.getValueAt(row, 3);
+				String c = (String) table.getValueAt(row, 4);
+				btxt.setText(b);
+				ttxt.setText(t);
+				atxt.setText(a);
+				ptxt.setText(p);
+				ctxt.setText(c);
 			}
 		});
 		btnFirst.setBounds(136, 314, 89, 23);
@@ -207,6 +218,17 @@ public class bookStore extends JFrame {
 		JButton btnLast_1 = new JButton("Last");
 		btnLast_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int row = table.getRowCount()-1;
+				String b = (String) table.getValueAt(row, 0);
+				String t = (String) table.getValueAt(row, 1);
+				String a = (String) table.getValueAt(row, 2);
+				String p = (String) table.getValueAt(row, 3);
+				String c = (String) table.getValueAt(row, 4);
+				btxt.setText(b);
+				ttxt.setText(t);
+				atxt.setText(a);
+				ptxt.setText(p);
+				ctxt.setText(c);
 			}
 		});
 		btnLast_1.setBounds(436, 314, 89, 23);
