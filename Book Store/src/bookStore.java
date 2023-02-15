@@ -184,6 +184,7 @@ public class bookStore extends JFrame {
 		btnFirst.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int row = 0;
+				table.setRowSelectionInterval(row,row);
 				String b = (String) table.getValueAt(row, 0);
 				String t = (String) table.getValueAt(row, 1);
 				String a = (String) table.getValueAt(row, 2);
@@ -202,6 +203,23 @@ public class bookStore extends JFrame {
 		JButton btnLast = new JButton("Next");
 		btnLast.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (table.getSelectedRow()==table.getRowCount()-1) {
+					
+				}
+				else {			
+					int row = table.getSelectedRow()+1;
+					table.setRowSelectionInterval(row,row);
+					String b = (String) table.getValueAt(row, 0);
+					String t = (String) table.getValueAt(row, 1);
+					String a = (String) table.getValueAt(row, 2);
+					String p = (String) table.getValueAt(row, 3);
+					String c = (String) table.getValueAt(row, 4);
+					btxt.setText(b);
+					ttxt.setText(t);
+					atxt.setText(a);
+					ptxt.setText(p);
+					ctxt.setText(c);
+				}
 			}
 		});
 		btnLast.setBounds(238, 314, 89, 23);
@@ -210,6 +228,23 @@ public class bookStore extends JFrame {
 		JButton btnPrevious = new JButton("Previous");
 		btnPrevious.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (table.getSelectedRow()==0) {
+										
+				}
+				else {			
+					int row = table.getSelectedRow()-1;
+					table.setRowSelectionInterval(row,row);
+					String b = (String) table.getValueAt(row, 0);
+					String t = (String) table.getValueAt(row, 1);
+					String a = (String) table.getValueAt(row, 2);
+					String p = (String) table.getValueAt(row, 3);
+					String c = (String) table.getValueAt(row, 4);
+					btxt.setText(b);
+					ttxt.setText(t);
+					atxt.setText(a);
+					ptxt.setText(p);
+					ctxt.setText(c);
+				}
 			}
 		});
 		btnPrevious.setBounds(337, 314, 89, 23);
@@ -219,6 +254,7 @@ public class bookStore extends JFrame {
 		btnLast_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int row = table.getRowCount()-1;
+				table.setRowSelectionInterval(row,row);
 				String b = (String) table.getValueAt(row, 0);
 				String t = (String) table.getValueAt(row, 1);
 				String a = (String) table.getValueAt(row, 2);
