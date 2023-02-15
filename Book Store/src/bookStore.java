@@ -142,10 +142,31 @@ public class bookStore extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnChange = new JButton("Change");
+		btnChange.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int x = table.getSelectedRow();
+				String b = btxt.getText();
+				String t = ttxt.getText();
+				String a = atxt.getText();
+				String p = ptxt.getText();
+				String c = ctxt.getText();
+				model.setValueAt(b, x, 0);
+				model.setValueAt(t, x, 1);
+				model.setValueAt(a, x, 2);
+				model.setValueAt(p, x, 3);
+				model.setValueAt(c, x, 4);
+			}
+		});
 		btnChange.setBounds(10, 295, 89, 23);
 		contentPane.add(btnChange);
 		
 		JButton btnRemove = new JButton("Remove");
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				model.removeRow(row);
+			}
+		});
 		btnRemove.setBounds(10, 329, 89, 23);
 		contentPane.add(btnRemove);
 		
