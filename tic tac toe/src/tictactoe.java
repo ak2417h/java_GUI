@@ -60,17 +60,19 @@ public class tictactoe extends JFrame {
 		l1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[0][0] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l1.setIcon(new ImageIcon(img));						
+				if (l1.getIcon() == null) {
+					if (p) {
+						arr[0][0] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
+						l1.setIcon(new ImageIcon(img));						
+					}
+					else {
+						arr[0][0] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
+						l1.setIcon(new ImageIcon(img));
+					}
+					p = !p;					
 				}
-				else {
-					arr[0][0] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l1.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -85,17 +87,20 @@ public class tictactoe extends JFrame {
 		l2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[0][1] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l2.setIcon(new ImageIcon(img));						
+				if (l2.getIcon() == null) {
+					if (p) {
+						arr[0][1] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l2.setIcon(new ImageIcon(img));
+					} else {
+						arr[0][1] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l2.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[0][1] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l2.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -110,17 +115,20 @@ public class tictactoe extends JFrame {
 		l3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[0][2] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l3.setIcon(new ImageIcon(img));						
+				if (l3.getIcon() == null) {
+					if (p) {
+						arr[0][2] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l3.setIcon(new ImageIcon(img));
+					} else {
+						arr[0][2] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l3.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[0][2] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l3.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -135,17 +143,20 @@ public class tictactoe extends JFrame {
 		l5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[1][1] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l5.setIcon(new ImageIcon(img));						
+				if (l5.getIcon() == null) {
+					if (p) {
+						arr[1][1] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l5.setIcon(new ImageIcon(img));
+					} else {
+						arr[1][1] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l5.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[1][1] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l5.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -187,17 +198,20 @@ public class tictactoe extends JFrame {
 		l4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[1][0] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l4.setIcon(new ImageIcon(img));						
+				if (l4.getIcon() == null) {
+					if (p) {
+						arr[1][0] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l4.setIcon(new ImageIcon(img));
+					} else {
+						arr[1][0] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l4.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[1][0] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l4.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -212,17 +226,20 @@ public class tictactoe extends JFrame {
 		l6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[1][2] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l6.setIcon(new ImageIcon(img));						
+				if (l6.getIcon() == null) {
+					if (p) {
+						arr[1][2] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l6.setIcon(new ImageIcon(img));
+					} else {
+						arr[1][2] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l6.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[1][2] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l6.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -237,17 +254,20 @@ public class tictactoe extends JFrame {
 		l9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[2][2] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l9.setIcon(new ImageIcon(img));						
+				if (l9.getIcon() == null) {
+					if (p) {
+						arr[2][2] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l9.setIcon(new ImageIcon(img));
+					} else {
+						arr[2][2] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l9.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[2][2] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l9.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
@@ -262,17 +282,20 @@ public class tictactoe extends JFrame {
 		l7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					arr[2][0] = "o";
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l7.setIcon(new ImageIcon(img));						
+				if (l7.getIcon() == null) {
+					if (p) {
+						arr[2][0] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l7.setIcon(new ImageIcon(img));
+					} else {
+						arr[2][0] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(),
+								l1.getHeight(), Image.SCALE_SMOOTH);
+						l7.setIcon(new ImageIcon(img));
+					}
+					p = !p;
 				}
-				else {
-					arr[2][0] = "x";
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l7.setIcon(new ImageIcon(img));
-				}
-				p = !p;
 				System.out.println(Arrays.toString(arr[0]));
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
