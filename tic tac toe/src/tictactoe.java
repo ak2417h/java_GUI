@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 public class tictactoe extends JFrame {
 
@@ -44,6 +45,8 @@ public class tictactoe extends JFrame {
 	 * Create the frame.
 	 */
 	public tictactoe() {
+		
+		
 		Border blackline = BorderFactory.createLineBorder(Color.black,2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 630, 539);
@@ -58,14 +61,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[0][0] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l1.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[0][0] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l1.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l1.setBounds(10, 11, 167, 141);
@@ -77,14 +86,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[0][1] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l2.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[0][1] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l2.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l2.setBounds(218, 11, 167, 141);
@@ -96,14 +111,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[0][2] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l3.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[0][2] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l3.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l3.setBounds(424, 11, 167, 141);
@@ -115,14 +136,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[1][1] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l5.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[1][1] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l5.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l5.setBounds(218, 181, 167, 141);
@@ -133,15 +160,23 @@ public class tictactoe extends JFrame {
 		l8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (p) {
-					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l8.setIcon(new ImageIcon(img));						
+				if (l8.getIcon() == null) {
+					if (p) {
+						arr[2][1] = "o";
+						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
+						l8.setIcon(new ImageIcon(img));						
+					}
+					else {
+						arr[2][1] = "x";
+						Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
+						l8.setIcon(new ImageIcon(img));
+					}
+					p = !p;					
 				}
-				else {
-					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
-					l8.setIcon(new ImageIcon(img));
-				}
-				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l8.setBounds(218, 348, 167, 141);
@@ -153,14 +188,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[1][0] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l4.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[1][0] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l4.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l4.setBounds(10, 181, 167, 141);
@@ -172,14 +213,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[1][2] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l6.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[1][2] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l6.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l6.setBounds(424, 181, 167, 141);
@@ -191,14 +238,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[2][2] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l9.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[2][2] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l9.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l9.setBounds(424, 348, 167, 141);
@@ -210,14 +263,20 @@ public class tictactoe extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (p) {
+					arr[2][0] = "o";
 					Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l7.setIcon(new ImageIcon(img));						
 				}
 				else {
+					arr[2][0] = "x";
 					Image img = new ImageIcon("images/x.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
 					l7.setIcon(new ImageIcon(img));
 				}
 				p = !p;
+				System.out.println(Arrays.toString(arr[0]));
+				System.out.println(Arrays.toString(arr[1]));
+				System.out.println(Arrays.toString(arr[2]));
+				System.out.println();
 			}
 		});
 		l7.setBounds(10, 348, 167, 141);
