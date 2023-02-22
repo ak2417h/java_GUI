@@ -16,6 +16,9 @@ import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import javax.swing.JTextField;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class tictactoe extends JFrame {
 
@@ -55,7 +58,7 @@ public class tictactoe extends JFrame {
 
 		Border blackline = BorderFactory.createLineBorder(Color.black,2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 718, 558);
+		setBounds(100, 100, 601, 555);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -107,7 +110,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l1.setBounds(10, 23, 167, 141);
+		l1.setBounds(31, 27, 167, 141);
 		contentPane.add(l1);
 		l1.setBorder(blackline);
 		
@@ -155,7 +158,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l2.setBounds(218, 23, 167, 141);
+		l2.setBounds(208, 27, 167, 141);
 		contentPane.add(l2);
 		l2.setBorder(blackline);
 		
@@ -194,7 +197,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l3.setBounds(424, 23, 167, 141);
+		l3.setBounds(385, 27, 167, 141);
 		contentPane.add(l3);
 		l3.setBorder(blackline);
 		
@@ -233,7 +236,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l5.setBounds(218, 193, 167, 141);
+		l5.setBounds(208, 179, 167, 141);
 		contentPane.add(l5);
 		l5.setBorder(blackline);
 		
@@ -271,7 +274,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l8.setBounds(218, 360, 167, 141);
+		l8.setBounds(208, 331, 167, 141);
 		contentPane.add(l8);
 		l8.setBorder(blackline);
 		
@@ -310,7 +313,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l4.setBounds(10, 193, 167, 141);
+		l4.setBounds(31, 179, 167, 141);
 		contentPane.add(l4);
 		l4.setBorder(blackline);
 		
@@ -349,7 +352,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l6.setBounds(424, 193, 167, 141);
+		l6.setBounds(385, 179, 167, 141);
 		contentPane.add(l6);
 		l6.setBorder(blackline);
 		
@@ -388,7 +391,7 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l9.setBounds(424, 360, 167, 141);
+		l9.setBounds(385, 331, 167, 141);
 		contentPane.add(l9);
 		l9.setBorder(blackline);
 		
@@ -427,8 +430,25 @@ public class tictactoe extends JFrame {
 				}
 			}
 		});
-		l7.setBounds(10, 360, 167, 141);
+		l7.setBounds(31, 331, 167, 141);
 		contentPane.add(l7);
 		l7.setBorder(blackline);
+		
+		JButton btnNewButton = new JButton("EXIT");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnNewButton.setBounds(161, 483, 89, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("RESET");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(338, 483, 89, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }
