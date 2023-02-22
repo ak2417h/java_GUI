@@ -9,9 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
+import javax.swing.JTextField;
+import java.awt.Font;
 
 public class tictactoe extends JFrame {
 
@@ -24,6 +28,7 @@ public class tictactoe extends JFrame {
 	{null,null,null},
 	{null,null,null},
 	};
+	
 	
 	/**
 	 * Launch the application.
@@ -44,12 +49,13 @@ public class tictactoe extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
 	public tictactoe() {
 		
-		
+
 		Border blackline = BorderFactory.createLineBorder(Color.black,2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 630, 539);
+		setBounds(100, 100, 718, 558);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -77,9 +83,29 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][0].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
+				else if ((arr[0][0]+arr[1][0]+arr[2][0]).equals(arr[0][0].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
+				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[0][0].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l1.setBounds(10, 11, 167, 141);
+		l1.setBounds(10, 23, 167, 141);
 		contentPane.add(l1);
 		l1.setBorder(blackline);
 		
@@ -105,9 +131,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l2.setBounds(218, 11, 167, 141);
+		l2.setBounds(218, 23, 167, 141);
 		contentPane.add(l2);
 		l2.setBorder(blackline);
 		
@@ -133,9 +170,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l3.setBounds(424, 11, 167, 141);
+		l3.setBounds(424, 23, 167, 141);
 		contentPane.add(l3);
 		l3.setBorder(blackline);
 		
@@ -161,9 +209,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l5.setBounds(218, 181, 167, 141);
+		l5.setBounds(218, 193, 167, 141);
 		contentPane.add(l5);
 		l5.setBorder(blackline);
 		
@@ -188,9 +247,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l8.setBounds(218, 348, 167, 141);
+		l8.setBounds(218, 360, 167, 141);
 		contentPane.add(l8);
 		l8.setBorder(blackline);
 		
@@ -216,9 +286,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l4.setBounds(10, 181, 167, 141);
+		l4.setBounds(10, 193, 167, 141);
 		contentPane.add(l4);
 		l4.setBorder(blackline);
 		
@@ -244,9 +325,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l6.setBounds(424, 181, 167, 141);
+		l6.setBounds(424, 193, 167, 141);
 		contentPane.add(l6);
 		l6.setBorder(blackline);
 		
@@ -272,9 +364,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l9.setBounds(424, 348, 167, 141);
+		l9.setBounds(424, 360, 167, 141);
 		contentPane.add(l9);
 		l9.setBorder(blackline);
 		
@@ -300,9 +403,20 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
+				boolean end = true;
+				for (int i=0;i<3;i++) {
+					for (int n = 0 ; n < 3; n++) {
+						if (arr[i][n]==null) {
+							end = false;
+						}
+					}
+				}
+				if (end) {
+					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
-		l7.setBounds(10, 348, 167, 141);
+		l7.setBounds(10, 360, 167, 141);
 		contentPane.add(l7);
 		l7.setBorder(blackline);
 	}
