@@ -133,14 +133,11 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
-				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][0].repeat(3))) {
+				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
 				}
-				else if ((arr[0][0]+arr[1][0]+arr[2][0]).equals(arr[0][0].repeat(3))) {
-					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
-				}
-				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[0][0].repeat(3))) {
-					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				else if ((arr[0][1]+arr[1][1]+arr[2][1]).equals(arr[0][1].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
 				}
 				else {
 					boolean end = true;
@@ -148,6 +145,7 @@ public class tictactoe extends JFrame {
 						for (int n = 0 ; n < 3; n++) {
 							if (arr[i][n]==null) {
 								end = false;
+								
 							}
 						}
 					}
