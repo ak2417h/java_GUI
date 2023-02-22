@@ -92,16 +92,18 @@ public class tictactoe extends JFrame {
 				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[0][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
 				}
-				boolean end = true;
-				for (int i=0;i<3;i++) {
-					for (int n = 0 ; n < 3; n++) {
-						if (arr[i][n]==null) {
-							end = false;
+				else {
+					boolean end = true;
+					for (int i=0;i<3;i++) {
+						for (int n = 0 ; n < 3; n++) {
+							if (arr[i][n]==null) {
+								end = false;
+							}
 						}
 					}
-				}
-				if (end) {
-					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+					if (end) {
+						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+					}					
 				}
 			}
 		});
@@ -131,16 +133,27 @@ public class tictactoe extends JFrame {
 				System.out.println(Arrays.toString(arr[1]));
 				System.out.println(Arrays.toString(arr[2]));
 				System.out.println();
-				boolean end = true;
-				for (int i=0;i<3;i++) {
-					for (int n = 0 ; n < 3; n++) {
-						if (arr[i][n]==null) {
-							end = false;
+				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][0].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
+				else if ((arr[0][0]+arr[1][0]+arr[2][0]).equals(arr[0][0].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
+				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[0][0].repeat(3))) {
+					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					boolean end = true;
+					for (int i=0;i<3;i++) {
+						for (int n = 0 ; n < 3; n++) {
+							if (arr[i][n]==null) {
+								end = false;
+							}
 						}
 					}
-				}
-				if (end) {
-					JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+					if (end) {
+						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+					}					
 				}
 			}
 		});
