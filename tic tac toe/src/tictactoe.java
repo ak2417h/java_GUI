@@ -32,6 +32,7 @@ public class tictactoe extends JFrame {
 	{null,null,null},
 	};
 	
+	boolean d = false;
 	
 	/**
 	 * Launch the application.
@@ -69,7 +70,7 @@ public class tictactoe extends JFrame {
 		l1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l1.getIcon() == null) {
+				if (l1.getIcon() == null && !d) {
 					if (p) {
 						arr[0][0] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
@@ -89,12 +90,15 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][0]+arr[1][0]+arr[2][0]).equals(arr[0][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[0][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -107,6 +111,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -119,7 +124,7 @@ public class tictactoe extends JFrame {
 		l2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l2.getIcon() == null) {
+				if (l2.getIcon() == null && !d) {
 					if (p) {
 						arr[0][1] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -140,9 +145,11 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][1]+arr[1][1]+arr[2][1]).equals(arr[0][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -156,6 +163,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -168,7 +176,7 @@ public class tictactoe extends JFrame {
 		l3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l3.getIcon() == null) {
+				if (l3.getIcon() == null && !d) {
 					if (p) {
 						arr[0][2] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -189,12 +197,15 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[0][0]+arr[0][1]+arr[0][2]).equals(arr[0][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][2]+arr[1][2]+arr[2][2]).equals(arr[0][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][2]+arr[1][1]+arr[2][0]).equals(arr[0][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[0][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -207,6 +218,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -219,7 +231,7 @@ public class tictactoe extends JFrame {
 		l5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l5.getIcon() == null) {
+				if (l5.getIcon() == null && !d) {
 					if (p) {
 						arr[1][1] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -240,15 +252,19 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[0][1]+arr[1][1]+arr[2][1]).equals(arr[1][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[1][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][2]+arr[1][1]+arr[2][0]).equals(arr[1][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[1][0]+arr[1][1]+arr[1][2]).equals(arr[1][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -261,6 +277,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -273,7 +290,7 @@ public class tictactoe extends JFrame {
 		l8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l8.getIcon() == null) {
+				if (l8.getIcon() == null && !d) {
 					if (p) {
 						arr[2][1] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(), l1.getHeight(),Image.SCALE_SMOOTH);
@@ -293,9 +310,11 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[2][0]+arr[2][1]+arr[2][2]).equals(arr[2][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][1]+arr[1][1]+arr[2][1]).equals(arr[2][1].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][1].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -309,6 +328,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -321,7 +341,7 @@ public class tictactoe extends JFrame {
 		l4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l4.getIcon() == null) {
+				if (l4.getIcon() == null && !d) {
 					if (p) {
 						arr[1][0] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -342,9 +362,11 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[0][0]+arr[1][0]+arr[2][0]).equals(arr[1][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[1][0]+arr[1][1]+arr[1][2]).equals(arr[1][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -358,6 +380,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -370,7 +393,7 @@ public class tictactoe extends JFrame {
 		l6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l6.getIcon() == null) {
+				if (l6.getIcon() == null && !d) {
 					if (p) {
 						arr[1][2] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -391,9 +414,11 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[0][2]+arr[1][2]+arr[2][2]).equals(arr[1][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[1][0]+arr[1][1]+arr[1][2]).equals(arr[1][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[1][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -407,6 +432,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -419,7 +445,7 @@ public class tictactoe extends JFrame {
 		l9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l9.getIcon() == null) {
+				if (l9.getIcon() == null && !d) {
 					if (p) {
 						arr[2][2] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -440,12 +466,15 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[2][0]+arr[2][1]+arr[2][2]).equals(arr[2][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][2]+arr[1][2]+arr[2][2]).equals(arr[2][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][0]+arr[1][1]+arr[2][2]).equals(arr[2][2].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][2].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -458,6 +487,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -470,7 +500,7 @@ public class tictactoe extends JFrame {
 		l7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (l7.getIcon() == null) {
+				if (l7.getIcon() == null && !d) {
 					if (p) {
 						arr[2][0] = "o";
 						Image img = new ImageIcon("images/o.png").getImage().getScaledInstance(l1.getWidth(),
@@ -491,12 +521,15 @@ public class tictactoe extends JFrame {
 				
 				if ((arr[2][0]+arr[2][1]+arr[2][2]).equals(arr[2][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][0]+arr[1][0]+arr[2][0]).equals(arr[2][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else if ((arr[0][2]+arr[1][1]+arr[2][0]).equals(arr[2][0].repeat(3))) {
 					JOptionPane.showMessageDialog(contentPane,arr[2][0].toUpperCase() + " wins","RESULT",JOptionPane.WARNING_MESSAGE);
+					d = true;
 				}
 				else {
 					boolean end = true;
@@ -509,6 +542,7 @@ public class tictactoe extends JFrame {
 					}
 					if (end) {
 						JOptionPane.showMessageDialog(contentPane,"TIE","RESULT",JOptionPane.WARNING_MESSAGE);
+						d = true;
 					}					
 				}
 			}
@@ -543,6 +577,7 @@ public class tictactoe extends JFrame {
 				l7.setIcon(null);
 				l8.setIcon(null);
 				l9.setIcon(null);
+				d = false;
 			}
 		});
 		btnNewButton_1.setBounds(338, 483, 89, 23);
