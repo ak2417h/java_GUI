@@ -5,6 +5,8 @@
 	<item key="org.eclipse.jdt.ui.last.selected.create.moduleinfo.comments" value="false"/>
 	<item key="org.eclipse.jdt.ui.last.selected.create.moduleinfo" value="false"/>
 	<item key="SortMembers.sort_all" value="false"/>
+	<item key="org.eclipse.jdt.ui.last.external.project" value="C:\Users\k0909471\Desktop\Student datatbase collectino"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\k0909471\Downloads"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item key="group_libraries" value="true"/>
 		<item key="layout" value="2"/>
@@ -21,5 +23,8 @@
 	<section name="OptionalMessageDialog.hide.">
 		<item key="SortMembersMessageDialog.optionalDialog.id" value="false"/>
 		<item key="configure_problem_severity_dialog_id" value="false"/>
+	</section>
+	<section name="BuildPathsPropertyPage">
+		<item key="pageIndex" value="2"/>
 	</section>
 </section>
