@@ -24,6 +24,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class StudentDatabaseConnection extends JFrame {
 
@@ -129,6 +131,23 @@ public class StudentDatabaseConnection extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = table.getSelectedRow();
+				String id = (String) table.getValueAt(row, 0);
+				String first = (String) table.getValueAt(row, 1);
+				String last = (String) table.getValueAt(row, 2);
+				String level = (String) table.getValueAt(row, 3);
+				int grade = (int) table.getValueAt(row, 4);
+				sitxt.setText(id);
+				fntxt.setText(first);
+				lntxt.setText(last);
+				gltxt.setText(level);
+				fgtxt.setText(""+grade);
+				
+			}
+		});
 		scrollPane.setViewportView(table);
 		
 		JButton addbtn = new JButton("Add Student");
@@ -158,10 +177,53 @@ public class StudentDatabaseConnection extends JFrame {
 		contentPane.add(addbtn);
 		
 		JButton delbtn = new JButton("Delete Student");
+		delbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int deletedRow = table.getSelectedRow();
+				String cell = (String) table.getValueAt(deletedRow, 0);
+				model = (DefaultTableModel) table.getModel();
+				model.removeRow(deletedRow);
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//k0909471//Desktop//Student datatbase collectino//student.accdb");
+					st = con.createStatement();
+					st.executeUpdate("delete from student where studentid = '" + cell + "'");
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		delbtn.setBounds(159, 324, 105, 23);
 		contentPane.add(delbtn);
 		
 		updatebtn = new JButton("Update Student");
+		updatebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int updatedRow = table.getSelectedRow();
+				String id = sitxt.getText();
+				String first = fntxt.getText();
+				String last = lntxt.getText();
+				String level = gltxt.getText();
+				int grade = Integer.parseInt(fgtxt.getText());
+				table.setValueAt(id, updatedRow, 0);
+				table.setValueAt(first, updatedRow, 1);
+				table.setValueAt(last, updatedRow, 2);
+				table.setValueAt(level, updatedRow, 3);
+				table.setValueAt(grade, updatedRow, 4);
+				String cell = (String) table.getValueAt(updatedRow, 0);
+				try {
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//k0909471//Desktop//Student datatbase collectino//student.accdb");
+					pst = con.prepareStatement("update student set studentid = '" + id + "',grade='" + grade + "' where studentid = '" + cell + "'");
+					pst.executeUpdate();
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		updatebtn.setBounds(297, 325, 114, 23);
 		contentPane.add(updatebtn);
 		
@@ -171,7 +233,7 @@ public class StudentDatabaseConnection extends JFrame {
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 					con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//k0909471//Desktop//Student datatbase collectino//student.accdb");
-					JOptionPane.showMessageDialog(null, "Connection successful!!");
+//					JOptionPane.showMessageDialog(null, "Connection successful!!");
 					st = con.createStatement();
 					String sql = "select studentid,firstname,lastname,gradelevel,finalgrade from student";
 					rs = st.executeQuery(sql);
