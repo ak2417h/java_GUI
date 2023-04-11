@@ -215,7 +215,7 @@ public class StudentDatabaseConnection extends JFrame {
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 					con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//k0909471//Desktop//Student datatbase collectino//student.accdb");
-					pst = con.prepareStatement("update student set studentid = '" + id + "',grade='" + grade + "' where studentid = '" + cell + "'");
+					pst = con.prepareStatement("update student set studentid = '" + id + "',firstname='" + first + "',lastname='" + last + "',gradelevel='" + level + "',finalgrade='" + grade + "' where studentid = '" + cell + "'");
 					pst.executeUpdate();
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
