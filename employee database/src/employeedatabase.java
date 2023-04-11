@@ -148,7 +148,7 @@ public class employeedatabase extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-					con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//k0909471//Downloads//compsci//emplyoee database//employeedatabase.accdb");
+					con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//k0909471//Downloads//compsci//employee database//employeedatabase.accdb");
 					JOptionPane.showMessageDialog(null, "Connection successful!!");
 					st = con.createStatement();
 					String sql = "select employeeID,FirstName,LastName,Salary,Department from student";
