@@ -129,12 +129,12 @@ public class employeedatabase extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int row = table.getSelectedRow();
-				String id = (String) table.getValueAt(row, 0);
+				int id = (int) table.getValueAt(row, 0);
 				String first = (String) table.getValueAt(row, 1);
 				String last = (String) table.getValueAt(row, 2);
 				int salary = (int) table.getValueAt(row, 3);
 				String department = (String) table.getValueAt(row, 4);
-				eitxt.setText(id);
+				eitxt.setText("" + id);
 				fntxt.setText(first);
 				lntxt.setText(last);
 				stxt.setText(""+salary);
@@ -192,7 +192,7 @@ public class employeedatabase extends JFrame {
 		btnRemoveEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int deletedRow = table.getSelectedRow();
-				String cell = (String) table.getValueAt(deletedRow, 0);
+				int cell = (int) table.getValueAt(deletedRow, 0);
 				model = (DefaultTableModel) table.getModel();
 				model.removeRow(deletedRow);
 				try {
