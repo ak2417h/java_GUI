@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -19,6 +21,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class store extends JFrame {
 
@@ -69,6 +73,14 @@ public class store extends JFrame {
 		contentPane.add(signup, "name_3209259101117200");
 		signup.setLayout(null);
 		
+		JPanel login = new JPanel();
+		contentPane.add(login, "name_3209278914142200");
+		login.setLayout(null);
+		
+		JPanel mainpage = new JPanel();
+		contentPane.add(mainpage, "name_3209289713365200");
+		mainpage.setLayout(null);
+		
 		JLabel lblNewLabel = new JLabel("Sign Up");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		lblNewLabel.setBounds(268, 36, 133, 42);
@@ -104,12 +116,44 @@ public class store extends JFrame {
 		signup.add(su_pw);
 		
 		JButton subtn = new JButton("Sign Up");
-		subtn.setBounds(253, 393, 107, 23);
+		subtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String name = su_name.getText();
+					String email = su_email.getText();
+					String password = new String(((JPasswordField) su_pw).getPassword());
+					
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\k0909471\\Downloads\\compsci\\final project\\store.accdb");
+					st = con.createStatement();
+					st.executeUpdate("insert into db (email,name,password) values('"+email+"','"+name+"','"+password+"')");
+					signup.setVisible(false);
+					login.setVisible(false);
+					mainpage.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "User Already Exists");	
+				}
+			}
+		});
+		subtn.setBounds(251, 363, 107, 23);
 		signup.add(subtn);
 		
-		JPanel login = new JPanel();
-		contentPane.add(login, "name_3209278914142200");
-		login.setLayout(null);
+		JLabel lblNewLabel_1_2_2 = new JLabel("Already Have An Account?");
+		lblNewLabel_1_2_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2_2.setBounds(156, 397, 218, 50);
+		signup.add(lblNewLabel_1_2_2);
+		
+		JButton su_libtn = new JButton("Login");
+		su_libtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				signup.setVisible(false);
+				login.setVisible(true);
+			}
+		});
+		su_libtn.setBounds(325, 412, 89, 23);
+		signup.add(su_libtn);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 23));
@@ -136,16 +180,55 @@ public class store extends JFrame {
 		login.add(li_pw);
 		
 		JButton libtn = new JButton("Login");
+		libtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String un = li_email.getText();
+					String pw = new String(((JPasswordField) li_pw).getPassword());
+					Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+					con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\k0909471\\Downloads\\compsci\\final project\\store.accdb");
+					st = con.createStatement();
+					String sql = "SELECT * from db WHERE email = '" + un + "' AND " + "password = '" + pw + "'";
+					 rs = st.executeQuery(sql);
+					 boolean stop = true;
+					 while (rs.next()) {
+						 if (rs.getString("email").equals(un) && rs.getString("password").equals(pw)) {
+							 signup.setVisible(false);
+								login.setVisible(false);
+								mainpage.setVisible(true);
+								stop = false;
+						 }				 
+					 }
+					 if (stop) {
+						 JOptionPane.showMessageDialog(null, "Incorrect Credentials");						 
+					 }
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		libtn.setBounds(242, 309, 107, 23);
 		login.add(libtn);
 		
-		JPanel mainpage = new JPanel();
-		contentPane.add(mainpage, "name_3209289713365200");
-		mainpage.setLayout(null);
+		JLabel lblNewLabel_1_2_2_1 = new JLabel("Don't Have An Account?");
+		lblNewLabel_1_2_2_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1_2_2_1.setBounds(172, 343, 218, 50);
+		login.add(lblNewLabel_1_2_2_1);
 		
-		JLabel lblWelcome = new JLabel("Welcome");
+		JButton su_libtn_1 = new JButton("Sign Up");
+		su_libtn_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login.setVisible(false);
+				signup.setVisible(true);
+			}
+		});
+		su_libtn_1.setBounds(312, 358, 89, 23);
+		login.add(su_libtn_1);
+		
+		JLabel lblWelcome = new JLabel("Welcome To The School Supply Store");
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblWelcome.setBounds(268, 11, 133, 42);
+		lblWelcome.setBounds(121, 11, 411, 42);
 		mainpage.add(lblWelcome);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -156,6 +239,27 @@ public class store extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Load Store Items");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String data[][]={ 
+						{"Pencil","$0.1"},    
+                        {"Eraser","$0.25"},
+                        {"Pen","$0.15"},    
+                        {"Notebook","$1"},
+                        {"Water","$0.5"},
+                        {"Chips","$1"},
+                        {"Candy","$1"},
+                        {"Charging Cable", "$3"},
+                        {"Charging Brick", "$10"},
+                        {"Headphones","$5"},
+                        {"Flash Drive","$10"},
+                        {"Laptop","$500"},
+                };    
+				String column[]={"Item","Cost"};         
+				table = new JTable(data,column);
+				scrollPane.setViewportView(table);
+			}
+		});
 		btnNewButton.setBounds(406, 73, 160, 23);
 		mainpage.add(btnNewButton);
 		
