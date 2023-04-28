@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -35,7 +37,7 @@ public class store extends JFrame {
 	private JTable table;
 	private JTextField m_item;
 	private JTextField m_quantity;
-	private JTextField textField;
+	private JTextField m_total;
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
@@ -205,6 +207,7 @@ public class store extends JFrame {
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Error");	
 				}
 			}
 		});
@@ -284,6 +287,34 @@ public class store extends JFrame {
 		mainpage.add(m_quantity);
 		
 		JButton btnNewButton_1 = new JButton("Purchase");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String item = m_item.getText();
+					int quantity = Integer.parseInt(m_quantity.getText());
+//				JOptionPane.showMessageDialog(null, table.getValueAt(0,1));	
+					
+					for (int i = 0; i < table.getRowCount();i++) {
+						if (table.getValueAt(i, 0).equals(item)) {
+							Double total = Double.parseDouble(table.getValueAt(i, 1).toString().substring(1))*quantity;
+							m_total.setText("$" + total);
+							break;
+						}
+						if (i == table.getRowCount()-1) {
+							JOptionPane.showMessageDialog(null, "Item Doesn't Exists");	
+							break;
+						}
+					}
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Please Enter A Number For The Quantity");	
+				} catch (HeadlessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_1.setBounds(94, 300, 89, 23);
 		mainpage.add(btnNewButton_1);
 		
@@ -292,10 +323,10 @@ public class store extends JFrame {
 		lblNewLabel_1_1_1_3.setBounds(23, 393, 99, 50);
 		mainpage.add(lblNewLabel_1_1_1_3);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(132, 411, 131, 20);
-		mainpage.add(textField);
+		m_total = new JTextField();
+		m_total.setColumns(10);
+		m_total.setBounds(132, 411, 131, 20);
+		mainpage.add(m_total);
 		
 		
 	}
