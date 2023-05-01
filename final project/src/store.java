@@ -43,6 +43,8 @@ public class store extends JFrame {
 	private ResultSet rs;
 	private PreparedStatement pst;
 	private DefaultTableModel model = new DefaultTableModel(); 
+	double total = 0;
+	private JTextField totaltxt;
 	/**
 	 * Launch the application.
 	 */
@@ -63,6 +65,7 @@ public class store extends JFrame {
 	 * Create the frame.
 	 */
 	public store() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 702, 533);
 		contentPane = new JPanel();
@@ -82,6 +85,25 @@ public class store extends JFrame {
 		JPanel mainpage = new JPanel();
 		contentPane.add(mainpage, "name_3209289713365200");
 		mainpage.setLayout(null);
+		
+		JPanel checkout = new JPanel();
+		contentPane.add(checkout, "name_3641523693335600");
+		checkout.setLayout(null);
+		
+		JLabel lblCheckout = new JLabel("Checkout");
+		lblCheckout.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblCheckout.setBounds(277, 39, 133, 42);
+		checkout.add(lblCheckout);
+		
+		JLabel lblYourTotalIs = new JLabel("Your Total Is:");
+		lblYourTotalIs.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblYourTotalIs.setBounds(159, 117, 150, 42);
+		checkout.add(lblYourTotalIs);
+		
+		totaltxt = new JTextField();
+		totaltxt.setBounds(334, 126, 133, 34);
+		checkout.add(totaltxt);
+		totaltxt.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Sign Up");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
@@ -296,8 +318,9 @@ public class store extends JFrame {
 					
 					for (int i = 0; i < table.getRowCount();i++) {
 						if (table.getValueAt(i, 0).equals(item)) {
-							Double total = Double.parseDouble(table.getValueAt(i, 1).toString().substring(1))*quantity;
-							m_total.setText("$" + total);
+							Double tot = Double.parseDouble(table.getValueAt(i, 1).toString().substring(1))*quantity;
+							total += tot;
+							JOptionPane.showMessageDialog(null, item + "(" + quantity + ") added");	
 							break;
 						}
 						if (i == table.getRowCount()-1) {
@@ -318,15 +341,29 @@ public class store extends JFrame {
 		btnNewButton_1.setBounds(94, 300, 89, 23);
 		mainpage.add(btnNewButton_1);
 		
-		JLabel lblNewLabel_1_1_1_3 = new JLabel("Your total is");
-		lblNewLabel_1_1_1_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_1_1_3.setBounds(23, 393, 99, 50);
-		mainpage.add(lblNewLabel_1_1_1_3);
+//		JLabel lblNewLabel_1_1_1_3 = new JLabel("Your total is");
+//		lblNewLabel_1_1_1_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+//		lblNewLabel_1_1_1_3.setBounds(23, 389, 99, 50);
+//		mainpage.add(lblNewLabel_1_1_1_3);
+//		
+//		m_total = new JTextField();
+//		m_total.setColumns(10);
+//		m_total.setBounds(132, 407, 131, 20);
+//		mainpage.add(m_total);
 		
-		m_total = new JTextField();
-		m_total.setColumns(10);
-		m_total.setBounds(132, 411, 131, 20);
-		mainpage.add(m_total);
+		JButton btnNewButton_2 = new JButton("Checkout");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				totaltxt.setText("$" + total);
+				signup.setVisible(false);
+				login.setVisible(false);
+				mainpage.setVisible(false);
+				checkout.setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(94, 450, 89, 23);
+		mainpage.add(btnNewButton_2);
+		
 		
 		
 	}
