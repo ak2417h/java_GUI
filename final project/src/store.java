@@ -25,6 +25,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class store extends JFrame {
 
@@ -42,9 +44,13 @@ public class store extends JFrame {
 	private Statement st;
 	private ResultSet rs;
 	private PreparedStatement pst;
-	private DefaultTableModel model = new DefaultTableModel(); 
+	private DefaultTableModel model = new DefaultTableModel();
+//	private DefaultTableModel model; 
+
 	double total = 0;
-	private JTextField totaltxt;
+	private JTable table_1;
+	
+	String dname = "";
 	/**
 	 * Launch the application.
 	 */
@@ -100,11 +106,6 @@ public class store extends JFrame {
 		lblYourTotalIs.setBounds(159, 117, 150, 42);
 		checkout.add(lblYourTotalIs);
 		
-		totaltxt = new JTextField();
-		totaltxt.setBounds(334, 126, 133, 34);
-		checkout.add(totaltxt);
-		totaltxt.setColumns(10);
-		
 		JLabel lblNewLabel = new JLabel("Sign Up");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		lblNewLabel.setBounds(268, 36, 133, 42);
@@ -139,6 +140,13 @@ public class store extends JFrame {
 		su_pw.setBounds(299, 304, 131, 20);
 		signup.add(su_pw);
 		
+		JLabel lblWelcome = new JLabel("Welcome To The School Supply Store");
+//		lblWelcome.setText("Welcome To The School Supply Store " + dname + "!");
+//		JLabel lblWelcome = new JLabel(dname);
+		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblWelcome.setBounds(21, 11, 645, 42);
+		mainpage.add(lblWelcome);
+		
 		JButton subtn = new JButton("Sign Up");
 		subtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,6 +162,8 @@ public class store extends JFrame {
 					signup.setVisible(false);
 					login.setVisible(false);
 					mainpage.setVisible(true);
+					dname = name;
+					lblWelcome.setText("Welcome To The School Supply Store " + dname + "!");
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -217,6 +227,9 @@ public class store extends JFrame {
 					 boolean stop = true;
 					 while (rs.next()) {
 						 if (rs.getString("email").equals(un) && rs.getString("password").equals(pw)) {
+							 dname = rs.getString("name").toString();
+//							 JOptionPane.showMessageDialog(null, dname);
+							 lblWelcome.setText("Welcome To The School Supply Store " + dname + "!");
 							 signup.setVisible(false);
 								login.setVisible(false);
 								mainpage.setVisible(true);
@@ -251,62 +264,64 @@ public class store extends JFrame {
 		su_libtn_1.setBounds(312, 358, 89, 23);
 		login.add(su_libtn_1);
 		
-		JLabel lblWelcome = new JLabel("Welcome To The School Supply Store");
-		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblWelcome.setBounds(121, 11, 411, 42);
-		mainpage.add(lblWelcome);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(329, 118, 302, 279);
+		scrollPane.setBounds(328, 95, 302, 279);
 		mainpage.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		
-		JButton btnNewButton = new JButton("Load Store Items");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String data[][]={ 
-						{"Pencil","$0.1"},    
-                        {"Eraser","$0.25"},
-                        {"Pen","$0.15"},    
-                        {"Notebook","$1"},
-                        {"Water","$0.5"},
-                        {"Chips","$1"},
-                        {"Candy","$1"},
-                        {"Charging Cable", "$3"},
-                        {"Charging Brick", "$10"},
-                        {"Headphones","$5"},
-                        {"Flash Drive","$10"},
-                        {"Laptop","$500"},
-                };    
-				String column[]={"Item","Cost"};         
-				table = new JTable(data,column);
-				scrollPane.setViewportView(table);
-			}
-		});
-		btnNewButton.setBounds(406, 73, 160, 23);
-		mainpage.add(btnNewButton);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Item");
 		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_1_1_1.setBounds(23, 133, 99, 50);
+		lblNewLabel_1_1_1_1.setBounds(21, 95, 99, 50);
 		mainpage.add(lblNewLabel_1_1_1_1);
 		
 		m_item = new JTextField();
 		m_item.setColumns(10);
-		m_item.setBounds(132, 151, 131, 20);
+		m_item.setBounds(130, 113, 131, 20);
 		mainpage.add(m_item);
 		
 		JLabel lblNewLabel_1_1_1_2 = new JLabel("Quantity");
 		lblNewLabel_1_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1_1_1_2.setBounds(23, 215, 99, 50);
+		lblNewLabel_1_1_1_2.setBounds(21, 177, 99, 50);
 		mainpage.add(lblNewLabel_1_1_1_2);
 		
 		m_quantity = new JTextField();
 		m_quantity.setColumns(10);
-		m_quantity.setBounds(132, 233, 131, 20);
+		m_quantity.setBounds(130, 195, 131, 20);
 		mainpage.add(m_quantity);
+		
+		table = new JTable();
+
+		String data[][]={ 
+				{"Pencil","$0.1"},    
+                {"Eraser","$0.25"},
+                {"Pen","$0.15"},    
+                {"Notebook","$1"},
+                {"Water","$0.5"},
+                {"Chips","$1"},
+                {"Candy","$1"},
+                {"Charging Cable", "$3"},
+                {"Charging Brick", "$10"},
+                {"Headphones","$5"},
+                {"Flash Drive","$10"},
+                {"Laptop","$500"},
+        };    
+		String column[]={"Item","Cost"};
+		table = new JTable(data,column);
+		scrollPane.setViewportView(table);
+		
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = table.getSelectedRow();
+				JOptionPane.showMessageDialog(null, row + "");	
+				String a = (String) table.getValueAt(row,0);
+				m_item.setText(a);
+//				m_item.setText(table.getValueAt(row,0).toString());
+			}
+		});
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(10, 320, 308, 153);
+		mainpage.add(lblNewLabel_3);
 		
 		JButton btnNewButton_1 = new JButton("Purchase");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -317,10 +332,15 @@ public class store extends JFrame {
 //				JOptionPane.showMessageDialog(null, table.getValueAt(0,1));	
 					
 					for (int i = 0; i < table.getRowCount();i++) {
-						if (table.getValueAt(i, 0).equals(item)) {
+						if ((table.getValueAt(i, 0).toString().toLowerCase()).equals(item.toLowerCase())) {
 							Double tot = Double.parseDouble(table.getValueAt(i, 1).toString().substring(1))*quantity;
 							total += tot;
-							JOptionPane.showMessageDialog(null, item + "(" + quantity + ") added");	
+							total = total *100;
+							total = Math.round(total);
+							total = total/100;
+							JOptionPane.showMessageDialog(null, table.getValueAt(i, 0) + "(" + quantity + ") added");
+							String temp_str = lblNewLabel_3.getText() + "<br/>" + table.getValueAt(i, 0) + " x" + quantity;
+							lblNewLabel_3.setText("<html>" + temp_str + "<html/>");
 							break;
 						}
 						if (i == table.getRowCount()-1) {
@@ -338,20 +358,15 @@ public class store extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(94, 300, 89, 23);
+		btnNewButton_1.setBounds(92, 262, 89, 23);
 		mainpage.add(btnNewButton_1);
 		
-//		JLabel lblNewLabel_1_1_1_3 = new JLabel("Your total is");
-//		lblNewLabel_1_1_1_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-//		lblNewLabel_1_1_1_3.setBounds(23, 389, 99, 50);
-//		mainpage.add(lblNewLabel_1_1_1_3);
-//		
-//		m_total = new JTextField();
-//		m_total.setColumns(10);
-//		m_total.setBounds(132, 407, 131, 20);
-//		mainpage.add(m_total);
+		JLabel totaltxt = new JLabel("New label");
+		totaltxt.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		totaltxt.setBounds(319, 127, 133, 23);
+		checkout.add(totaltxt);
 		
-		JButton btnNewButton_2 = new JButton("Checkout");
+		JButton btnNewButton_2 = new JButton("Proceed To Checkout");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				totaltxt.setText("$" + total);
@@ -361,10 +376,20 @@ public class store extends JFrame {
 				checkout.setVisible(true);
 			}
 		});
-		btnNewButton_2.setBounds(94, 450, 89, 23);
+		btnNewButton_2.setBounds(393, 427, 171, 23);
 		mainpage.add(btnNewButton_2);
 		
+		JLabel lblNewLabel_2 = new JLabel("Your Shopping Cart");
+		lblNewLabel_2.setBounds(92, 296, 123, 14);
+		mainpage.add(lblNewLabel_2);
 		
-		
+		JButton paybtn = new JButton("Pay");
+		paybtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Check Your Email For The Payment Info");
+			}
+		});
+		paybtn.setBounds(259, 207, 113, 42);
+		checkout.add(paybtn);
 	}
 }
